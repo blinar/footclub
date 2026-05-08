@@ -1,0 +1,88 @@
+<!-- add-event.html - Modale d'ajout d'événement coach -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootClub - Nouvel Événement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body class="app-layout app-layout--calendar modal-page">
+  <main class="form-center">
+    <div class="form-card" style="border-top: 4px solid var(--color-red); background: var(--color-white);">
+      <div class="modal-header" style="padding-top: 28px; padding-bottom: 18px; align-items: flex-start;">
+        <div>
+          <h2 class="modal-title" style="margin-bottom: 12px;">Ajouter un événement</h2>
+          <p style="color: #374151; font-size: 16px; line-height: 1.6; max-width: 520px;">Créez un nouvel événement pour votre équipe en renseignant le type, la date, l'heure et le lieu.</p>
+        </div>
+
+        <a href="/pages/coach/calendar.html" class="icon-button" aria-label="Fermer"
+          style="width: 36px; height: 36px; color: #94a3b8;">
+          <span class="material-symbols-outlined" style="font-size: 28px;">close</span>
+        </a>
+      </div>
+
+      <form action="/pages/coach/calendar.html" method="GET">
+        <div class="modal-body" style="display: flex; flex-direction: column; gap: 24px; padding-top: 0; padding-bottom: 16px;">
+          <div class="field-group">
+            <br>
+            <label for="event-type">Type d'événement</label>
+            <select id="event-type" name="event-type" style="appearance: none; padding: 12px;">
+              <option value="match">Match</option>
+              <option value="train">Entraînement</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="opponent">Adversaire</label>
+            <input id="opponent" name="opponent" type="text" placeholder="Nom de l'équipe adverse">
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+            <div class="field-group">
+              <label for="date">Date</label>
+              <input id="date" name="date" type="text" placeholder="mm/dd/yyyy">
+            </div>
+
+            <div class="field-group">
+              <label for="meeting-time">Heure de rendez-vous</label>
+              <input id="meeting-time" name="meeting-time" type="text" placeholder="--:-- --">
+            </div>
+
+            <div class="field-group">
+              <label for="start-time">Heure de début</label>
+              <input id="start-time" name="start-time" type="text" placeholder="--:-- --">
+            </div>
+
+            <div class="field-group">
+              <label for="end-time">Heure de fin (estimée)</label>
+              <input id="end-time" name="end-time" type="text" placeholder="--:-- --">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="location">Lieu</label>
+            <input id="location" name="location" type="text" placeholder="Stade, Complexe sportif...">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; padding-top: 8px;">
+          <a href="/pages/coach/calendar.html" class="btn-secondary" style="flex: 1 1 0; min-height: 48px;">Annuler</a>
+          <button type="submit" class="btn-primary" style="flex: 1 1 0; min-height: 48px;">
+            <span>Enregistrer</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

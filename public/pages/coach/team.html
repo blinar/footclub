@@ -1,0 +1,112 @@
+<!-- team.html - Gestion de l'équipe coach -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootClub - Mon équipe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="app-layout app-layout--my-team">
+  <div class="calendar-preview-shell">
+    <header class="floating-header">
+      <a href="/pages/coach/calendar.html" class="floating-brand" aria-label="FootClub">
+        <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
+        <span class="floating-brand-copy">
+          <strong>FOOTCLUB</strong>
+          <span>FC Ste-Croix</span>
+        </span>
+      </a>
+
+      <nav class="floating-actions" aria-label="Navigation entraîneur">
+        <a href="/pages/coach/calendar.html" class="floating-action">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Calendrier</span>
+        </a>
+        <a href="/pages/coach/team.html" class="floating-action is-active active" aria-current="page">
+          <span class="material-symbols-outlined">groups</span>
+          <span>Mon équipe</span>
+        </a>
+        <a href="/pages/coach/settings.html" class="floating-action">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Paramètres</span>
+        </a>
+      </nav>
+
+      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+        <span class="material-symbols-outlined">logout</span>
+      </a>
+    </header>
+
+    <main class="content calendar-preview-content">
+      <div class="page-head" style="margin-bottom: 24px;">
+        <div>
+          <p
+            style="color: var(--color-red); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+            Groupe Compétition</p>
+          <h2>Mon équipe</h2>
+          <p>Gérez les membres de votre équipe.</p>
+        </div>
+
+        <a href="/pages/coach/add-member.html" class="btn-primary">
+          <span class="material-symbols-outlined">add</span>
+          <span>Ajouter un membre</span>
+        </a>
+      </div>
+
+      <section class="panel-card table-panel">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Joueur</th>
+              <th>Contact</th>
+              <th>Rôle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hugo Bernard</strong></td>
+              <td>hugo.bernard@example.com</td>
+              <td><span class="status-pill status-pill--primary">Entraîneur</span></td>
+            </tr>
+            <tr>
+              <td><strong>Nicolas Petit</strong></td>
+              <td>nicolas.petit@example.com</td>
+              <td><span class="status-pill status-pill--primary">Entraîneur</span></td>
+            </tr>
+            <tr>
+              <td><strong>Elio Pereira</strong></td>
+              <td>elio.pereira@example.com</td>
+              <td><span class="status-pill">Joueur</span></td>
+            </tr>
+            <tr>
+              <td><strong>Nassim Gauthier</strong></td>
+              <td>nassim.gauthier@example.com</td>
+              <td><span class="status-pill">Joueur</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tom Vidal</strong></td>
+              <td>tom.vidal@example.com</td>
+              <td><span class="status-pill">Joueur</span></td>
+            </tr>
+            <tr>
+              <td><strong>Yanis Bouchard</strong></td>
+              <td>yanis.bouchard@example.com</td>
+              <td><span class="status-pill">Joueur</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

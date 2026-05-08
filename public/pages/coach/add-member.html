@@ -1,0 +1,60 @@
+<!-- add-member.html - Modale d'ajout de membre coach -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootClub - Ajouter un membre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="app-layout app-layout--my-team modal-page">
+  <main class="form-center">
+    <div class="form-card" style="border-top: 4px solid var(--color-red); background: var(--color-white);">
+      <div class="modal-header" style="padding-top: 28px; padding-bottom: 18px; align-items: flex-start;">
+        <div>
+          <h2 class="modal-title" style="margin-bottom: 12px;">Ajouter un membre</h2>
+          <p style="color: #374151; font-size: 16px; line-height: 1.6; max-width: 520px;">Saisissez l'adresse e-mail du
+            nouveau membre pour l'inviter à rejoindre l'équipe.</p>
+        </div>
+
+        <a href="/pages/coach/team.html" class="icon-button" aria-label="Fermer"
+          style="width: 36px; height: 36px; color: #94a3b8;">
+          <span class="material-symbols-outlined" style="font-size: 28px;">close</span>
+        </a>
+      </div>
+
+      <form action="/pages/coach/team.html" method="GET">
+        <div class="modal-body"
+          style="display: flex; flex-direction: column; gap: 24px; padding-top: 0; padding-bottom: 16px;">
+          <div class="field-group">
+            <br>
+            <label for="member-email">Adresse e-mail</label>
+            <input id="member-email" name="member-email" type="email" placeholder="exemple@email.com">
+          </div>
+
+          <div style="display: flex; gap: 16px; padding-top: 8px;">
+            <a href="/pages/coach/team.html" class="btn-secondary" style="flex: 1 1 0; min-height: 48px;">Annuler</a>
+            <button type="submit" class="btn-primary" style="flex: 1 1 0; min-height: 48px;">
+              <span>Ajouter</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          style="border-top: 1px solid #f1f5f9; padding: 20px 24px 24px; display: flex; align-items: flex-start; gap: 10px; color: #9ca3af;">
+          <p style="font-size: 12px; line-height: 1.45; font-style: italic;">Vous pourrez ensuite contacter le nouveau membre pour l'informer.</p>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

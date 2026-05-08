@@ -1,0 +1,237 @@
+<!-- calendar.html - Calendrier utilisateur en lecture seule -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootClub - Calendrier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 24px;
+    }
+
+    .calendar-card {
+      position: relative;
+      min-height: 212px;
+      padding: 22px 20px 18px;
+      border: 1px solid var(--color-line-soft);
+      border-radius: 18px;
+      background: var(--color-white);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .calendar-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: var(--card-accent, var(--color-red));
+    }
+
+    .calendar-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .calendar-card__label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 12px;
+      background: #efedef;
+      color: var(--color-ink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .calendar-card__date {
+      min-width: 72px;
+      text-align: right;
+    }
+
+    .calendar-card__day {
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--color-ink);
+    }
+
+    .calendar-card__month {
+      margin-top: 2px;
+      color: var(--month-color, var(--color-red));
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .calendar-card__title {
+      margin-top: 10px;
+      color: var(--color-ink);
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .calendar-card__divider {
+      margin: 18px 0 14px;
+      height: 1px;
+      background: var(--color-line);
+    }
+
+    .calendar-card__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--color-ink);
+      font-size: 16px;
+    }
+
+    .calendar-card__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .calendar-card__meta-item .material-symbols-outlined {
+      font-size: 18px;
+      color: #394150;
+    }
+
+    @media (max-width: 1200px) {
+      .calendar-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .calendar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="app-layout app-layout--calendar">
+  <div class="calendar-preview-shell">
+    <header class="floating-header">
+      <a href="/pages/user/calendar.html" class="floating-brand" aria-label="FootClub">
+        <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
+        <span class="floating-brand-copy">
+          <strong>Footclub</strong>
+          <span>FC Ste-Croix</span>
+        </span>
+      </a>
+
+      <nav class="floating-actions" aria-label="Navigation utilisateur">
+        <a href="/pages/user/calendar.html" class="floating-action is-active active" aria-current="page">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Calendrier</span>
+        </a>
+        <a href="/pages/settings.html" class="floating-action">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Paramètres</span>
+        </a>
+      </nav>
+
+      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+        <span class="material-symbols-outlined">logout</span>
+      </a>
+    </header>
+
+    <main class="content calendar-preview-content">
+      <div class="page-head"
+        style="padding-bottom: 22px; border-bottom: 1px solid var(--color-line); margin-bottom: 24px;">
+        <div>
+          <h2>Saison : Printemps 2026</h2>
+          <p>Planning tactique et calendrier des rencontres officielles.</p>
+        </div>
+
+        <div class="calendar-toolbar" style="margin: 0; justify-content: flex-end;">
+          <div class="filter-pill">
+            <span class="material-symbols-outlined">filter_list</span>
+            <span>Toutes Compétitions</span>
+          </div>
+          <div class="filter-pill">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span>Avril 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="calendar-grid">
+        <article class="calendar-card" style="--card-accent: var(--color-red); --month-color: var(--color-red);">
+          <div class="calendar-card__top">
+            <div>
+              <span class="calendar-card__label">Championnat</span>
+              <h3 class="calendar-card__title">vs. AS Vauréal</h3>
+            </div>
+            <div class="calendar-card__date">
+              <div class="calendar-card__day">08</div>
+              <div class="calendar-card__month">Avril</div>
+            </div>
+          </div>
+
+          <div class="calendar-card__divider"></div>
+
+          <div class="calendar-card__meta">
+            <div class="calendar-card__meta-item">
+              <span class="material-symbols-outlined">schedule</span>
+              <span>20:00 - 22:00</span>
+            </div>
+            <div class="calendar-card__meta-item">
+              <span class="material-symbols-outlined">stadium</span>
+              <span>Stade des Tilleuls (Extérieur)</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="calendar-card" style="--card-accent: #aab4c6; --month-color: #45464d;">
+          <div class="calendar-card__top">
+            <div>
+              <span class="calendar-card__label">Entraînement</span>
+              <h3 class="calendar-card__title">Séance de contrôle</h3>
+            </div>
+            <div class="calendar-card__date">
+              <div class="calendar-card__day">13</div>
+              <div class="calendar-card__month">Avril</div>
+            </div>
+          </div>
+
+          <div class="calendar-card__divider"></div>
+
+          <div class="calendar-card__meta">
+            <div class="calendar-card__meta-item">
+              <span class="material-symbols-outlined">schedule</span>
+              <span>18:30 - 20:30</span>
+            </div>
+            <div class="calendar-card__meta-item">
+              <span class="material-symbols-outlined">sports_soccer</span>
+              <span>Terrain Annexe 2 (Domicile)</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

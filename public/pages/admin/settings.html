@@ -1,0 +1,92 @@
+<!-- settings.html - Paramètres admin -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paramètres admin - FootClub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="app-layout app-layout--settings settings-state-default">
+  <div class="calendar-preview-shell">
+    <header class="floating-header">
+      <a href="/pages/admin/teams.html" class="floating-brand" aria-label="FootClub">
+        <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
+        <span class="floating-brand-copy">
+          <strong>FOOTCLUB</strong>
+          <span>FC Ste-Croix</span>
+        </span>
+      </a>
+
+      <nav class="floating-actions" aria-label="Navigation admin">
+        <a href="/pages/admin/teams.html" class="floating-action">
+          <span class="material-symbols-outlined">sports_soccer</span>
+          <span>Équipes</span>
+        </a>
+        <a href="/pages/admin/settings.html" class="floating-action is-active active" aria-current="page">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Paramètres</span>
+        </a>
+      </nav>
+
+      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+        <span class="material-symbols-outlined">logout</span>
+      </a>
+    </header>
+
+    <main class="content calendar-preview-content">
+      <div class="page-head" style="margin-bottom: 24px;">
+        <div>
+          <h2>Paramètres</h2>
+          <p>Sécurité et accès au compte.</p>
+        </div>
+      </div>
+
+      <section class="panel-card settings-card" style="max-width: 800px;">
+        <h3>Accès administrateur</h3>
+
+        <p class="settings-message settings-message--error-1">Les deux champs sont obligatoires.</p>
+        <p class="settings-message settings-message--error-2">Le mot de passe actuel est incorrect.</p>
+        <p class="settings-message settings-message--error-3">La confirmation du mot de passe ne correspond pas.</p>
+        <p class="settings-message settings-message--success">Mot de passe mis à jour.</p>
+
+        <form class="form-stack" method="POST" action="/auth/change-password" style="max-width: 400px;">
+          <input type="hidden" name="returnTo" value="/pages/admin/settings.html">
+          <div class="field-group">
+            <label for="currentPassword">Mot de passe actuel</label>
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="********" required>
+          </div>
+
+          <div class="field-group">
+            <label for="newPassword">Nouveau mot de passe</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="********" required>
+          </div>
+
+          <div class="field-group">
+            <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="********" required>
+          </div>
+
+          <div class="action-row" style="padding-top: 16px; border-top: 1px solid var(--color-line);">
+            <button type="submit" class="btn-primary" style="min-height: 48px; padding: 0 24px;">Enregistrer</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="note-panel" style="max-width: 800px;">
+        <span class="material-symbols-outlined">info</span>
+        <p>Pour modifier ces réglages globaux, passez par la base de données ou le panneau d'administration.</p>
+      </aside>
+    </main>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!-- sign-up.html - Page d'inscription avec formulaire POST -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription - FootClub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>input::placeholder{color:#9ca3af;opacity:1;}</style>
+</head>
+
+<body class="auth-page auth-register">
+  <a href="/pages/home.html" class="auth-page-back" aria-label="Retour à l'accueil">
+    <span class="material-symbols-outlined">arrow_back</span>
+    <span>Accueil</span>
+  </a>
+
+  <main class="auth-shell">
+    <section class="auth-card auth-card--register">
+      <header class="auth-card-header auth-card-header--register">
+        <img src="/images/logo/3.png" alt="FootClub" class="site-logo" style="margin: 0 auto 12px;">
+        <h1 class="auth-brand-title">FOOTCLUB</h1>
+        <p class="auth-tagline">FC Ste-Croix</p>
+      </header>
+
+      <div class="auth-content">
+        <form class="auth-form" method="POST" action="/auth/register">
+          <div class="field">
+            <label for="full_name" class="field-label">Nom complet</label>
+            <div class="input-wrap">
+              <span class="material-symbols-outlined input-icon">person</span>
+              <input type="text" id="full_name" name="full_name" class="input-control" required
+                placeholder="Prénom Nom" style="color: #000000;">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email" class="field-label">Email</label>
+            <div class="input-wrap">
+              <span class="material-symbols-outlined input-icon">mail</span>
+              <input type="email" id="email" name="email" class="input-control" required
+                placeholder="prenom.nom@club.fr" style="color: #000000;">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password" class="field-label">Mot de passe</label>
+            <div class="input-wrap">
+              <span class="material-symbols-outlined input-icon">lock</span>
+              <input type="password" id="password" name="password" class="input-control" required minlength="6"
+                placeholder="******" style="color: #000000;">
+            </div>
+          </div>
+
+          <button type="submit" class="auth-submit">
+            <span>S'inscrire</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </form>
+      </div>
+
+      <footer class="auth-footer auth-footer--register">
+        <p>Déjà un compte ? <a href="/pages/sign-in.html">Se connecter</a></p>
+      </footer>
+    </section>
+  </main>
+</body>
+
+</html>

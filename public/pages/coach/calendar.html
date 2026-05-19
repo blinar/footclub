@@ -1,3 +1,4 @@
+<!-- JS: calendar-coach.js -->
 <!-- calendar.html - Calendrier coach avec en-tête flottant expérimental -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,15 +19,22 @@
 <body class="app-layout app-layout--calendar">
   <div class="calendar-preview-shell">
     <header class="floating-header">
-      <a href="/pages/coach/calendar.html" class="floating-brand" aria-label="FootClub">
+      <div class="floating-brand" aria-label="FootClub">
         <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
         <span class="floating-brand-copy">
           <strong>FOOTCLUB</strong>
           <span>FC Ste-Croix</span>
         </span>
-      </a>
+      </div>
 
-      <nav class="floating-actions" aria-label="Navigation entraîneur">
+      <div class="nav-toggle-wrapper">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle-overlay"></label>
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="floating-actions" aria-label="Navigation entraîneur">
         <a href="/pages/coach/calendar.html" class="floating-action is-active active" aria-current="page">
           <span class="material-symbols-outlined">calendar_today</span>
           <span>Calendrier</span>
@@ -40,8 +48,9 @@
           <span>Paramètres</span>
         </a>
       </nav>
+      </div>
 
-      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+      <a href="/auth/logout" class="floating-action floating-action--danger" aria-label="Se déconnecter">
         <span class="material-symbols-outlined">logout</span>
       </a>
     </header>
@@ -54,83 +63,19 @@
         </div>
 
         <div class="calendar-toolbar calendar-toolbar--compact">
-          <div class="filter-pill is-active">
+          <div class="filter-pill is-active" data-filter="all" role="button" tabindex="0">
             <span>Tous</span>
           </div>
-          <div class="filter-pill">
+          <div class="filter-pill" data-filter="2" role="button" tabindex="0">
             <span>Matchs</span>
           </div>
-          <div class="filter-pill">
+          <div class="filter-pill" data-filter="1" role="button" tabindex="0">
             <span>Entraînements</span>
           </div>
         </div>
       </section>
 
-      <section class="event-list">
-        <article class="event-card" style="border-top: 4px solid var(--color-red);">
-          <div class="event-card__left">
-            <div class="event-card__date">
-              <span class="status-pill status-pill--red">Match</span>
-              <div class="event-card__day">09 Avr</div>
-            </div>
-            <div style="width: 1px; align-self: stretch; background: var(--color-line);"></div>
-            <div style="flex: 1 1 auto; min-width: 0;">
-              <h3 class="event-card__title" style="margin-bottom: 6px;">vs RC Saint-Aubin</h3>
-              <div class="event-card__meta">
-                <span><span class="material-symbols-outlined"
-                    style="font-size: 18px; color: #6b7280;">schedule</span>15:00 - 17:00</span>
-                <span><span class="material-symbols-outlined"
-                    style="font-size: 18px; color: #6b7280;">location_on</span>Stade du Parc Sud</span>
-              </div>
-            </div>
-          </div>
-          <a href="/pages/coach/edit-event.html" class="icon-button" aria-label="Modifier l'événement">
-            <span class="material-symbols-outlined">edit</span>
-          </a>
-        </article>
-
-        <article class="event-card" style="border-top: 4px solid #96a0b7;">
-          <div class="event-card__left">
-            <div class="event-card__date">
-              <span class="status-pill status-pill--primary">Entraînement</span>
-              <div class="event-card__day">12 Avr</div>
-            </div>
-            <div style="width: 1px; align-self: stretch; background: var(--color-line);"></div>
-            <div style="flex: 1 1 auto; min-width: 0;">
-              <h3 class="event-card__title" style="margin-bottom: 6px;">Séance pressing &amp; transitions</h3>
-              <div class="event-card__meta">
-                <span><span class="material-symbols-outlined"
-                    style="font-size: 18px; color: #6b7280;">schedule</span>18:00 - 20:00</span>
-                <span><span class="material-symbols-outlined"
-                    style="font-size: 18px; color: #6b7280;">location_on</span>Centre d'entraînement - Terrain 1</span>
-              </div>
-            </div>
-          </div>
-          <a href="/pages/coach/edit-event.html" class="icon-button" aria-label="Modifier l'événement">
-            <span class="material-symbols-outlined">edit</span>
-          </a>
-        </article>
-
-        <article class="event-card" style="border-top: 4px solid #d1d5db; opacity: 0.5;">
-          <div class="event-card__left">
-            <div class="event-card__date">
-              <span class="status-pill">Terminé</span>
-              <div class="event-card__day" style="text-decoration: line-through; text-decoration-color: #9ca3af;">25 Avr
-              </div>
-            </div>
-            <div style="width: 1px; align-self: stretch; background: var(--color-line);"></div>
-            <div style="flex: 1 1 auto; min-width: 0;">
-              <h3 class="event-card__title" style="margin-bottom: 6px; color: #9ca3af;">vs US Bellevue</h3>
-              <div class="event-card__meta" style="color: #9ca3af;">
-                <span>Nul 1 - 1</span>
-              </div>
-            </div>
-          </div>
-          <a href="/pages/coach/edit-event.html" class="icon-button" aria-label="Modifier l'événement">
-            <span class="material-symbols-outlined">edit</span>
-          </a>
-        </article>
-      </section>
+      <section class="calendar-grid calendar-grid--coach" id="calendar-events"></section>
 
       <a href="/pages/coach/add-event.html" class="calendar-fab" aria-label="Ajouter un événement">
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
@@ -138,6 +83,7 @@
     </main>
   </div>
   </div>
+  <script src="/js/calendar-coach.js" defer></script>
 </body>
 
 </html>

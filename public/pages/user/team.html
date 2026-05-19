@@ -1,12 +1,12 @@
-<!-- JS: calendar-user.js -->
-<!-- calendar.html - Calendrier utilisateur en lecture seule -->
+<!-- JS: team-user.js -->
+<!-- team.html - Vue équipe en lecture seule pour les joueurs -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FootClub - Calendrier</title>
+  <title>FootClub - Mon équipe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="app-layout app-layout--calendar">
+<body class="app-layout app-layout--my-team">
   <div class="calendar-preview-shell">
     <header class="floating-header">
       <div class="floating-brand" aria-label="FootClub">
@@ -35,11 +35,11 @@
         </label>
 
         <nav class="floating-actions" aria-label="Navigation utilisateur">
-          <a href="/pages/user/calendar.html" class="floating-action is-active active" aria-current="page">
+          <a href="/pages/user/calendar.html" class="floating-action">
             <span class="material-symbols-outlined">calendar_today</span>
             <span>Calendrier</span>
           </a>
-          <a href="/pages/user/team.html" class="floating-action">
+          <a href="/pages/user/team.html" class="floating-action is-active active" aria-current="page">
             <span class="material-symbols-outlined">groups</span>
             <span>Mon équipe</span>
           </a>
@@ -56,24 +56,43 @@
     </header>
 
     <main class="content calendar-preview-content">
-      <div class="page-head"
-        style="padding-bottom: 22px; border-bottom: 1px solid var(--color-line); margin-bottom: 24px;">
+      <div class="page-head" style="margin-bottom: 24px;">
         <div>
-          <h2>Saison : Printemps 2026</h2>
-          <p>Planning tactique et calendrier des rencontres officielles.</p>
-        </div>
-
-        <div class="calendar-toolbar calendar-toolbar--compact">
-          <div class="filter-pill is-active" data-filter="all" role="button" tabindex="0"><span>Tous</span></div>
-          <div class="filter-pill" data-filter="2" role="button" tabindex="0"><span>Matchs</span></div>
-          <div class="filter-pill" data-filter="1" role="button" tabindex="0"><span>Entraînements</span></div>
+          <p
+            style="color: var(--color-red); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+            Groupe Compétition</p>
+          <h2 id="team-title">Mon équipe</h2>
+          <p id="team-subtitle">Membres de votre équipe.</p>
         </div>
       </div>
 
-      <section class="calendar-grid" id="calendar-events"></section>
+      <section class="panel-card table-panel" id="team-section" style="display: none;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Joueur</th>
+              <th>Contact</th>
+              <th>Rôle</th>
+            </tr>
+          </thead>
+          <tbody id="team-members">
+            <!-- Données chargées par JavaScript -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Affiché si le joueur n'est pas rattaché à une équipe -->
+      <section id="no-team-section" style="display: none;">
+        <div style="background: white; padding: 40px; border-radius: 8px; text-align: center;">
+          <h2 style="color: #000; margin-bottom: 20px;">Vous n'êtes rattaché à aucune équipe</h2>
+          <p style="color: #666; font-size: 16px; line-height: 1.6;">
+            Veuillez contacter l'administration pour plus d'informations : <strong>fc-admin@footclub.com</strong>
+          </p>
+        </div>
+      </section>
     </main>
   </div>
-  <script src="/js/calendar-user.js" defer></script>
+  <script src="/js/team-user.js" defer></script>
 </body>
 
 </html>

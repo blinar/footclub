@@ -33,7 +33,7 @@
       <div class="auth-content">
         <form class="auth-form" method="POST" action="/auth/register">
           <div class="field">
-            <label for="full_name" class="field-label">Nom complet</label>
+            <label for="full_name" class="field-label">Nom complet du joueur</label>
             <div class="input-wrap">
               <span class="material-symbols-outlined input-icon">person</span>
               <input type="text" id="full_name" name="full_name" class="input-control" required
@@ -42,7 +42,7 @@
           </div>
 
           <div class="field">
-            <label for="email" class="field-label">Email</label>
+            <label for="email" class="field-label">Email du responsable (ou du joueur)</label>
             <div class="input-wrap">
               <span class="material-symbols-outlined input-icon">mail</span>
               <input type="email" id="email" name="email" class="input-control" required
@@ -67,10 +67,11 @@
       </div>
 
       <footer class="auth-footer auth-footer--register">
-        <p>Déjà un compte ? <a href="/pages/sign-in.html">Se connecter</a></p>
+        <p>Déjà un compte ? <a href="/sign-in.html">Se connecter</a></p>
       </footer>
     </section>
   </main>
+  <script src="/js/sign-up.js" defer></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<!-- JS: admin-teams.js -->
 <!-- teams.html - Gestion des équipes -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,15 +19,22 @@
 <body class="app-layout app-layout--teams">
   <div class="calendar-preview-shell">
     <header class="floating-header">
-      <a href="/pages/admin/teams.html" class="floating-brand" aria-label="FootClub">
+      <div class="floating-brand" aria-label="FootClub">
         <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
         <span class="floating-brand-copy">
           <strong>FOOTCLUB</strong>
           <span>FC Ste-Croix</span>
         </span>
-      </a>
+      </div>
 
-      <nav class="floating-actions" aria-label="Navigation admin">
+      <div class="nav-toggle-wrapper">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle-overlay"></label>
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="floating-actions" aria-label="Navigation admin">
         <a href="/pages/admin/teams.html" class="floating-action is-active active" aria-current="page">
           <span class="material-symbols-outlined">sports_soccer</span>
           <span>Équipes</span>
@@ -36,8 +44,9 @@
           <span>Paramètres</span>
         </a>
       </nav>
+      </div>
 
-      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+      <a href="/auth/logout" class="floating-action floating-action--danger" aria-label="Se déconnecter">
         <span class="material-symbols-outlined">logout</span>
       </a>
     </header>
@@ -46,101 +55,34 @@
       <div class="page-head">
         <div>
           <h2>Équipes</h2>
-          <p>Gérez les effectifs et le personnel d'encadrement.</p>
+          <p>Créez une équipe et associez-lui un entraîneur disponible.</p>
         </div>
-
-        <a href="/pages/admin/create-team.html" class="btn-primary">
-          <span class="material-symbols-outlined">add</span>
-          <span>Créer une équipe</span>
-        </a>
       </div>
 
+      <!-- ADMIN_TEAMS_MESSAGE -->
+
+      <section class="panel-card" style="margin-bottom: 24px; max-width: 720px; padding: 32px;">
+        <h3 style="margin-bottom: 16px;">Créer une équipe</h3>
+
+        <form action="/admin/teams" method="POST" class="form-stack" style="padding: 8px 0 0;">
+          <div class="field-group">
+            <label for="team-name">Nom de l'équipe</label>
+            <input id="team-name" name="name" type="text" required>
+          </div>
+
+          <div class="action-row" style="justify-content: flex-start;">
+            <button type="submit" class="btn-primary" style="min-height: 48px; padding: 0 24px;">Créer l'équipe</button>
+          </div>
+        </form>
+      </section>
+
       <section class="panel-grid panel-grid--teams">
-        <article class="panel-card team-card">
-          <div class="team-card__head">
-            <div>
-              <span class="team-card__meta">Catégorie Senior</span>
-              <h3 class="team-card__name">Seniors<br>A</h3>
-            </div>
-
-            <div class="count-badge">23<br>Joueurs</div>
-          </div>
-
-          <div>
-            <span class="team-card__section-title">Entraîneurs</span>
-            <ul class="team-card__list">
-              <li class="team-card__member">
-                <strong>Mathis Durand</strong>
-                <span>Entraîneur Principal</span>
-              </li>
-              <li class="team-card__member">
-                <strong>Yann Klein</strong>
-                <span>Entraîneur Adjoint</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="team-card__footer">
-            <a href="/pages/admin/add-coach.html" class="btn-secondary">
-              <span class="material-symbols-outlined">person_add</span>
-              <span>Ajouter un entraîneur</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="panel-card team-card">
-          <div class="team-card__head">
-            <div>
-              <span class="team-card__meta">Formation</span>
-              <h3 class="team-card__name">U19<br>Élite</h3>
-            </div>
-
-            <div class="count-badge">17<br>Joueurs</div>
-          </div>
-
-          <div>
-            <span class="team-card__section-title">Entraîneurs</span>
-            <ul class="team-card__list">
-              <li class="team-card__member">
-                <strong>Sarah Fontaine</strong>
-                <span>Entraîneur Principal</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="team-card__footer">
-            <a href="/pages/admin/add-coach.html" class="btn-secondary">
-              <span class="material-symbols-outlined">person_add</span>
-              <span>Ajouter un entraîneur</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="panel-card team-card">
-          <div class="team-card__head">
-            <div>
-              <span class="team-card__meta">Pré-formation</span>
-              <h3 class="team-card__name">U17<br>Détection</h3>
-            </div>
-
-            <div class="count-badge">6<br>Joueurs</div>
-          </div>
-
-          <div class="team-card__empty">
-            <span class="material-symbols-outlined">sports</span>
-            <p>Aucun staff assigné</p>
-          </div>
-
-          <div class="team-card__footer">
-            <a href="/pages/admin/add-coach.html" class="btn-secondary">
-              <span class="material-symbols-outlined">person_add</span>
-              <span>Ajouter un entraîneur</span>
-            </a>
-          </div>
-        </article>
+        <!-- ADMIN_TEAMS_LIST -->
       </section>
     </main>
   </div>
+
+  <script src="/js/admin-teams.js" defer></script>
 </body>
 
 </html>

@@ -1,4 +1,8 @@
-/* style.css - Styles globaux ultra-simplifiés */
+/* style.css - Styles globaux */
+
+/* =====================================================================
+   VARIABLES & RESET
+   ===================================================================== */
 
 :root {
   --color-red: #BD2929;
@@ -69,7 +73,11 @@ img {
   -webkit-font-smoothing: antialiased;
 }
 
-/* AUTH PAGES */
+/* =====================================================================
+   AUTH : CONNEXION & INSCRIPTION
+   Utilisé par : sign-in.html, sign-up.html
+   ===================================================================== */
+
 .auth-page {
   min-height: 100vh;
   display: flex;
@@ -297,7 +305,7 @@ img {
 }
 
 .input-control::placeholder {
-  color: rgba(var(--color-ink), 0.3);
+  color: #9ca3af;
 }
 
 .input-control:focus {
@@ -380,7 +388,11 @@ img {
   text-decoration: underline;
 }
 
-/* Global forms: centered card, inherit page background (no gray) */
+/* =====================================================================
+   FORMULAIRES GLOBAUX
+   Utilisé par : add-event.html, add-member.html, edit-event.html
+   ===================================================================== */
+
 .form-center {
   display: flex;
   align-items: center;
@@ -414,7 +426,11 @@ img {
   .auth-card-header, .auth-content, .auth-footer { padding-left: 24px; padding-right: 24px; }
 }
 
-/* APP SHELL */
+/* =====================================================================
+   APP SHELL : SIDEBAR & MISE EN PAGE
+   Utilisé par : toutes les pages admin/, coach/, user/ (floating-header, calendar-preview-shell)
+   ===================================================================== */
+
 .app-layout {
   min-height: 100vh;
   background-color: #ffffff;
@@ -680,62 +696,21 @@ img {
   margin-bottom: 0;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--color-line);
+  position: relative;
+  z-index: 2;
 }
 
 .calendar-toolbar--compact {
   margin-bottom: 0;
   justify-content: flex-start;
-}
-
-.topbar {
-  min-height: 64px;
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 0 32px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.topbar-search {
-  flex: 1 1 auto;
-  max-width: 480px;
   position: relative;
+  z-index: 3;
 }
 
-.topbar-search .material-symbols-outlined {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(var(--color-ink), 0.4);
-  font-size: 20px;
-}
-
-.topbar-search input {
-  width: 100%;
-  height: 44px;
-  border: 1px solid var(--color-line-soft);
-  background: #f6f3f5;
-  color: var(--color-ink);
-  padding: 0 16px 0 44px;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
-}
-
-.topbar-search input::placeholder {
-  color: rgba(var(--color-ink), 0.3);
-}
-
-.topbar-search input:focus {
-  border-color: var(--color-red);
-  background: var(--color-white);
-  box-shadow: 0 0 0 3px rgba(189, 41, 41, 0.08);
-}
+/* =====================================================================
+   CONTENU DE PAGE
+   Utilisé par : toutes les pages app (content, page-head, page-actions)
+   ===================================================================== */
 
 .content {
   flex: 1 1 auto;
@@ -769,6 +744,11 @@ img {
   gap: 12px;
   flex-wrap: wrap;
 }
+
+/* =====================================================================
+   ÉQUIPES (PAGE ADMIN)
+   Utilisé par : admin/teams.html (server-rendered), coach/team.html (data-table)
+   ===================================================================== */
 
 .panel-card {
   background: var(--color-white);
@@ -901,12 +881,14 @@ img {
 }
 
 .table-panel {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px;
 }
 
 .data-table thead {
@@ -917,12 +899,18 @@ img {
   padding: 16px 24px;
   border-bottom: 1px solid var(--color-line);
   text-align: left;
+  white-space: nowrap;
 }
 
 .data-table td {
   color: var(--color-ink);
   font-size: 16px;
 }
+
+/* =====================================================================
+   PILLS & STATUTS
+   Utilisé par : calendar-coach.js, calendar-user.js, team-coach.js, events.controller.js (rendu dynamique)
+   ===================================================================== */
 
 .status-pill {
   display: inline-flex;
@@ -945,6 +933,17 @@ img {
   background: rgba(189, 41, 41, 0.1);
   color: var(--color-red);
 }
+
+/* Pill gris pour les événements passés */
+.status-pill--grey {
+  background: rgba(156, 163, 175, 0.15);
+  color: #9ca3af;
+}
+
+/* =====================================================================
+   PARAMÈTRES
+   Utilisé par : admin/settings.html, coach/settings.html, user/settings.html
+   ===================================================================== */
 
 .settings-card {
   padding: 32px;
@@ -972,6 +971,11 @@ img {
 .settings-state-success .settings-message--success {
   display: block;
 }
+
+/* =====================================================================
+   CHAMPS DE FORMULAIRE
+   Utilisé par : add-event.html, add-member.html, edit-event.html
+   ===================================================================== */
 
 .form-stack {
   display: flex;
@@ -1011,6 +1015,61 @@ img {
 .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
   border-color: var(--color-red);
   box-shadow: 0 0 0 3px rgba(189, 41, 41, 0.1);
+}
+
+.field-group--muted {
+  opacity: 0.55;
+}
+
+.field-group--muted input {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* =====================================================================
+   CALENDRIER (COACH + UTILISATEUR)
+   Utilisé par : coach/calendar.html (calendar-coach.js), user/calendar.html (calendar-user.js)
+   ===================================================================== */
+
+/* Bouton flottant d'ajout d'événement : simple et rouge */
+.calendar-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--color-red);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(6,14,36,0.12);
+  text-decoration: none;
+  z-index: 999;
+}
+
+.calendar-fab .material-symbols-outlined {
+  font-size: 28px;
+}
+
+/* Select avec une petite flèche CSS pour indiquer une liste déroulante */
+.team-coach-select {
+	/* Masquer la flèche système du navigateur */
+	appearance: none;
+	width: 100%;
+	min-height: 48px;
+	padding: 12px 44px 12px 12px;
+	border: 1px solid var(--color-line);
+	border-radius: 12px;
+	background-color: var(--color-white);
+	
+	/* Créer une petite flèche personnalisée en bas à droite */
+  background-position: calc(100% - 18px) calc(100% - 18px), calc(100% - 12px) calc(100% - 18px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 44px;
 }
 
 .action-row {
@@ -1054,6 +1113,9 @@ img {
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  position: relative;
+  z-index: 4;
+  pointer-events: auto;
 }
 
 .filter-pill.is-active {
@@ -1147,6 +1209,188 @@ img {
   font-size: 20px;
 }
 
+/* Cartes calendrier partagées par coach et utilisateurs */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+.calendar-grid--coach {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.calendar-card {
+  position: relative;
+  min-height: 212px;
+  padding: 22px 20px 18px;
+  border: 1px solid var(--color-line-soft);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: var(--card-accent, var(--color-red));
+}
+
+/* Top stripe color by event type */
+.calendar-card--match::before    { background: var(--color-red); }
+.calendar-card--training::before { background: #6b7280; }
+
+.calendar-card--match .calendar-card__month    { color: var(--color-red); }
+.calendar-card--training .calendar-card__month { color: #4b4f58; }
+
+/* Événements passés : grisés pour indiquer qu'ils ne sont plus actifs */
+.calendar-card--past { opacity: 0.55; }
+.calendar-card--past::before { background: #c4c9d1 !important; }
+.calendar-card--past .calendar-card__month { color: #9ca3af !important; }
+
+.calendar-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.calendar-card__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  background: #efedef;
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.calendar-card__date {
+  min-width: 72px;
+  text-align: right;
+}
+
+.calendar-card__day {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.calendar-card__month {
+  margin-top: 2px;
+  color: var(--month-color, var(--color-red));
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calendar-card__title {
+  margin-top: 0;
+  color: var(--color-ink);
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.calendar-card__opponent {
+  margin-top: 8px;
+  color: #5b6474;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.calendar-card__divider {
+  margin: 18px 0 14px;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.calendar-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--color-ink);
+  font-size: 16px;
+}
+
+.calendar-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-card__meta-item .material-symbols-outlined {
+  font-size: 18px;
+  color: #394150;
+}
+
+.calendar-card__footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: auto;
+}
+
+.calendar-card__edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(var(--color-red), 0.08);
+  color: var(--color-red);
+}
+/* small spacing between edit and delete */
+.calendar-card__edit { margin-right: 8px; }
+
+/* Bouton supprimer propre (rond, discret, accessible) */
+.btn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(0,0,0,0.02);
+  color: #44484f;
+  cursor: pointer;
+}
+.btn-delete .material-symbols-outlined {
+  font-size: 18px;
+}
+.btn-delete:hover {
+  background: rgba(189,41,41,0.08);
+  border-color: rgba(189,41,41,0.16);
+  color: var(--color-red);
+}
+.btn-delete:focus {
+  outline: 2px solid rgba(189,41,41,0.12);
+  outline-offset: 2px;
+}
+
+/* =====================================================================
+   MEMBRES : PAGE ÉQUIPE (COACH)
+   Utilisé par : coach/team.html (team-coach.js)
+   ===================================================================== */
+
 .member-item {
   display: flex;
   align-items: center;
@@ -1193,25 +1437,10 @@ img {
   font-size: 16px;
 }
 
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(6, 14, 36, 0.35);
-  z-index: 30;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-overlay.is-open {
-  display: flex;
-}
-
-.modal-dialog {
-  width: min(520px, 90vw);
-  background: var(--color-white);
-  box-shadow: var(--shadow-card);
-}
+/* =====================================================================
+   MODAL
+   Utilisé par : add-event.html, add-member.html, edit-event.html (modal-header, modal-body)
+   ===================================================================== */
 
 .modal-header {
   padding: 24px 32px;
@@ -1227,39 +1456,20 @@ img {
   margin: 0;
 }
 
-.modal-close {
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: transparent;
-  color: rgba(var(--color-ink), 0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
-}
-
-.modal-close:hover {
-  color: var(--color-ink);
-}
-
-.modal-close .material-symbols-outlined {
-  font-size: 24px;
-}
-
 .modal-body {
   padding: 32px;
 }
 
-.modal-footer {
-  padding: 24px 32px;
-  border-top: 1px solid var(--color-line);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: flex-end;
-}
+/* Caché par défaut sur desktop */
+.nav-toggle-btn { display: none; }
+.nav-toggle-input { display: none; }
+.nav-toggle-overlay { display: none; }
+.nav-toggle-wrapper { display: contents; }
+
+/* =====================================================================
+   RESPONSIVE
+   Utilisé par : toutes les pages (breakpoints 1024px, 768px, 640px)
+   ===================================================================== */
 
 @media (max-width: 1024px) {
   .panel-grid--teams { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1275,4 +1485,239 @@ img {
   .event-card { flex-direction: column; align-items: flex-start; }
   .event-card__left { flex-direction: column; width: 100%; }
   .event-card__actions { width: 100%; justify-content: space-between; }
+}
+
+/* ≤860px : "hamburger" menu (floating-header) */
+@media (max-width: 860px) {
+  .floating-header {
+    justify-content: flex-start;
+    height: 96px;
+  }
+
+  .floating-brand {
+    flex: 1 1 auto;
+  }
+
+  .nav-toggle-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px !important;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 30;
+  }
+
+  .nav-toggle-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    /* Optionnel : petite couleur de fond foncée pour l'effet focus */
+    /* background: rgba(0,0,0,0.3); */
+  }
+
+  .nav-toggle-input:checked ~ .nav-toggle-overlay {
+    display: block;
+  }
+
+  /* On enlève la gestion par le wrapper, margin-left: auto nous garde à droite */
+  .nav-toggle-wrapper {
+    display: contents;
+  }
+
+  .nav-toggle-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--color-white);
+  }
+
+  .floating-actions {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 28px;
+    flex-direction: column;
+    background: var(--color-navy);
+    padding: 8px;
+    gap: 4px;
+    z-index: 30;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(6, 14, 36, 0.4);
+    min-width: 190px;
+  }
+
+  .nav-toggle-input:checked ~ .floating-actions {
+    display: flex;
+  }
+
+  .floating-actions .floating-action {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    border-radius: 8px !important;
+    justify-content: flex-start;
+    gap: 12px;
+    border-color: transparent;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+/* ≤640px : mobile */
+@media (max-width: 640px) {
+  .calendar-preview-shell {
+    width: 100%;
+    padding: 10px 10px 24px;
+  }
+
+  .calendar-preview-content {
+    width: 100%;
+    padding: 8px 0 0;
+  }
+
+  .floating-header {
+    min-height: 68px;
+    padding: 12px 16px;
+    gap: 10px;
+    border-radius: 16px !important;
+  }
+
+  .content {
+    padding: 20px 16px;
+  }
+
+  .page-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .page-head h2 {
+    font-size: clamp(26px, 6vw, 40px);
+  }
+
+  .calendar-grid,
+  .calendar-grid--coach {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .calendar-toolbar {
+    gap: 8px;
+  }
+
+  .event-card__date {
+    min-width: auto;
+  }
+
+  .event-card__day {
+    font-size: 30px;
+  }
+
+  .event-card__title {
+    font-size: 20px;
+  }
+
+  .modal-header {
+    padding: 18px 20px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .settings-card {
+    padding: 20px;
+  }
+
+  .settings-card h3 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .form-center {
+    padding: 20px 16px;
+  }
+
+  .form-center .form-card {
+    padding: 20px;
+  }
+
+  .auth-card-header {
+    padding: 20px 20px 14px;
+  }
+
+  .auth-content {
+    padding: 16px 20px 0;
+  }
+
+  .auth-footer {
+    padding: 14px 20px 20px;
+  }
+
+  .auth-brand-title {
+    font-size: 26px;
+  }
+
+  .auth-tagline {
+    font-size: 13px;
+  }
+
+  .site-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ≤480px : petit mobile */
+@media (max-width: 480px) {
+  .calendar-preview-shell {
+    padding: 8px 8px 20px;
+  }
+
+  .floating-header {
+    padding: 10px 12px;
+    border-radius: 12px !important;
+  }
+
+  .floating-brand-copy span {
+    display: none;
+  }
+
+  .floating-brand-copy strong {
+    font-size: 16px;
+  }
+
+  .calendar-card__day {
+    font-size: 34px;
+  }
+
+  .calendar-card__title {
+    font-size: 20px;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .count-badge {
+    min-width: 80px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }

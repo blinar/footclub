@@ -18,15 +18,22 @@
 <body class="app-layout app-layout--settings settings-state-default">
   <div class="calendar-preview-shell">
     <header class="floating-header">
-      <a href="/pages/coach/calendar.html" class="floating-brand" aria-label="FootClub">
+      <div class="floating-brand" aria-label="FootClub">
         <img src="/images/logo/4.png" alt="FootClub" class="site-logo site-logo--small">
         <span class="floating-brand-copy">
           <strong>FOOTCLUB</strong>
           <span>FC Ste-Croix</span>
         </span>
-      </a>
+      </div>
 
-      <nav class="floating-actions" aria-label="Navigation entraîneur">
+      <div class="nav-toggle-wrapper">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle-overlay"></label>
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="floating-actions" aria-label="Navigation entraîneur">
         <a href="/pages/coach/calendar.html" class="floating-action">
           <span class="material-symbols-outlined">calendar_today</span>
           <span>Calendrier</span>
@@ -40,8 +47,9 @@
           <span>Paramètres</span>
         </a>
       </nav>
+      </div>
 
-      <a href="/pages/home.html" class="floating-action floating-action--danger" aria-label="Se déconnecter">
+      <a href="/auth/logout" class="floating-action floating-action--danger" aria-label="Se déconnecter">
         <span class="material-symbols-outlined">logout</span>
       </a>
     </header>

@@ -1,3 +1,4 @@
+<!-- JS: add-event.js -->
 <!-- add-event.html - Modale d'ajout d'événement coach -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,7 +22,7 @@
       <div class="modal-header" style="padding-top: 28px; padding-bottom: 18px; align-items: flex-start;">
         <div>
           <h2 class="modal-title" style="margin-bottom: 12px;">Ajouter un événement</h2>
-          <p style="color: #374151; font-size: 16px; line-height: 1.6; max-width: 520px;">Créez un nouvel événement pour votre équipe en renseignant le type, la date, l'heure et le lieu.</p>
+          <p style="color: #374151; font-size: 16px; line-height: 1.6; max-width: 520px;">Créez un entraînement ou un match pour votre équipe en renseignant les informations demandées.</p>
         </div>
 
         <a href="/pages/coach/calendar.html" class="icon-button" aria-label="Fermer"
@@ -30,47 +31,45 @@
         </a>
       </div>
 
-      <form action="/pages/coach/calendar.html" method="GET">
+      <form action="/coach/events" method="POST">
         <div class="modal-body" style="display: flex; flex-direction: column; gap: 24px; padding-top: 0; padding-bottom: 16px;">
           <div class="field-group">
-            <br>
-            <label for="event-type">Type d'événement</label>
-            <select id="event-type" name="event-type" style="appearance: none; padding: 12px;">
-              <option value="match">Match</option>
-              <option value="train">Entraînement</option>
+            <label for="type">Type</label>
+            <select id="type" name="type" required>
+              <option value="" selected disabled>Sélectionner un type</option>
+              <option value="1">Entraînement</option>
+              <option value="2">Match</option>
             </select>
           </div>
 
           <div class="field-group">
-            <label for="opponent">Adversaire</label>
-            <input id="opponent" name="opponent" type="text" placeholder="Nom de l'équipe adverse">
+            <label for="title">Titre</label>
+            <input id="title" name="title" type="text" placeholder="Nom de la séance ou du match">
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
-            <div class="field-group">
-              <label for="date">Date</label>
-              <input id="date" name="date" type="text" placeholder="mm/dd/yyyy">
-            </div>
+          <div class="field-group">
+            <label for="start_date">Date et heure de début</label>
+            <input id="start_date" name="start_date" type="datetime-local" required>
+          </div>
 
-            <div class="field-group">
-              <label for="meeting-time">Heure de rendez-vous</label>
-              <input id="meeting-time" name="meeting-time" type="text" placeholder="--:-- --">
-            </div>
+          <div class="field-group">
+            <label for="end_date">Date et heure de fin</label>
+            <input id="end_date" name="end_date" type="datetime-local" required>
+          </div>
 
-            <div class="field-group">
-              <label for="start-time">Heure de début</label>
-              <input id="start-time" name="start-time" type="text" placeholder="--:-- --">
-            </div>
-
-            <div class="field-group">
-              <label for="end-time">Heure de fin (estimée)</label>
-              <input id="end-time" name="end-time" type="text" placeholder="--:-- --">
-            </div>
+          <div class="field-group">
+            <label for="convocation_date">Date et heure de convocation</label>
+            <input id="convocation_date" name="convocation_date" type="datetime-local" required>
           </div>
 
           <div class="field-group">
             <label for="location">Lieu</label>
-            <input id="location" name="location" type="text" placeholder="Stade, Complexe sportif...">
+            <input id="location" name="location" type="text" placeholder="Stade, salle, terrain..." required>
+          </div>
+
+          <div class="field-group" id="opponent-group">
+            <label for="opponent">Adversaire</label>
+            <input id="opponent" name="opponent" type="text" placeholder="Uniquement pour un match">
           </div>
         </div>
 
@@ -83,6 +82,7 @@
       </form>
     </div>
   </main>
+  <script src="/js/add-event.js" defer></script>
 </body>
 
 </html>

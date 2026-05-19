@@ -1,3 +1,4 @@
+<!-- JS: add-member.js -->
 <!-- add-member.html - Modale d'ajout de membre coach -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,13 +32,15 @@
         </a>
       </div>
 
-      <form action="/pages/coach/team.html" method="GET">
+      <form action="/coach/team" method="POST">
         <div class="modal-body"
           style="display: flex; flex-direction: column; gap: 24px; padding-top: 0; padding-bottom: 16px;">
           <div class="field-group">
             <br>
-            <label for="member-email">Adresse e-mail</label>
-            <input id="member-email" name="member-email" type="email" placeholder="exemple@email.com">
+            <label for="userId">Sélectionner un joueur</label>
+            <select id="userId" name="userId" required>
+              <option value="">Chargement...</option>
+            </select>
           </div>
 
           <div style="display: flex; gap: 16px; padding-top: 8px;">
@@ -47,14 +50,11 @@
             </button>
           </div>
         </div>
-
-        <div
-          style="border-top: 1px solid #f1f5f9; padding: 20px 24px 24px; display: flex; align-items: flex-start; gap: 10px; color: #9ca3af;">
-          <p style="font-size: 12px; line-height: 1.45; font-style: italic;">Vous pourrez ensuite contacter le nouveau membre pour l'informer.</p>
-        </div>
       </form>
     </div>
   </main>
+
+  <script src="/js/add-member.js" defer></script>
 </body>
 
 </html>

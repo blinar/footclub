@@ -10,8 +10,9 @@ router.post('/login', login);
 // Reçoit le formulaire d'inscription
 router.post('/register', register);
 
-// Supprime le cookie et déconnecte la personne
+// Supprime le cookie et redirige vers la connexion
 router.post('/logout', logout);
+router.get('/logout', logout);
 
 // Reçoit le formulaire de changement de mot de passe
 router.post('/change-password', requireAuth, changePassword);

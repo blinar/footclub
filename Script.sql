@@ -50,7 +50,7 @@ INSERT INTO seasons (name, start_date, end_date)
 VALUES ('Printemps 2026', '2026-01-01', '2026-07-31');
 
 INSERT INTO users (full_name, email, password, role)
-VALUES ('Admin', 'fc-admin@footclub.com', '$2b$10$cTSRhrA8gOERT3cm80hYseWKIqs3FeWsRoTJdgEh.wAhDnsIMzUUq', 1); -- mdp : admin123
+VALUES ('Admin', 'fc-admin@footclub.com', '$2b$10$qrpgbl.A2j2dxDHqgpBKOeY.ZbxSpM39WJD.MyAzQfl/al0qXLTz2', 1); -- mdp : admin123
 
 -- ============================================================
 -- ÉQUIPES

@@ -104,3 +104,4 @@ INSERT INTO events (type, title, start_date, end_date, convocation_date, locatio
   -- Juniors A
   (1, 'Entraînement sur terrain 1', '2026-05-23 09:00', '2026-05-23 10:30', '2026-05-23 08:50', 'Terrain 1, Ste-Croix', NULL, (SELECT id FROM teams WHERE name = 'Juniors A'), (SELECT id FROM seasons WHERE name = 'Printemps 2026')),
   (2, 'Vs FC Junior Couvet', '2026-05-26 10:00', '2026-05-26 11:30', '2026-05-26 09:30', 'Terrain de Couvet', 'FC Junior Couvet', (SELECT id FROM teams WHERE name = 'Juniors A'), (SELECT id FROM seasons WHERE name = 'Printemps 2026'));
+  
